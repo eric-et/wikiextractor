@@ -9,21 +9,21 @@
 # - Keep tables. They're mostly garbage but can be removed later (remove "^!*").
 # - Remove disambiguation pages. Right now there is no use for them.
 
-INPUT=$1
-PROCESSES=$2
-TEMPLATES=$3
-OUTPUT=$4
+INPUT="/root/wikidata/zhwiki-latest-pages-articles.xml.bz2"
+PROCESSES=4
+TEMPLATES="TEMPLATES"
+OUTPUT="/root/wikidata/zhwiki.json"
 
 python WikiExtractor.py $INPUT \
        --json \
        --processes $PROCESSES \
        --templates $TEMPLATES \
        --output $OUTPUT \
-       --bytes 1M \
-       --compress \
-       --links \
-       --sections \
+       --bytes 10M \
        --lists \
-       --keep_tables \
+#       --links \
+#       --sections \
+#       --keep-tables \
+#       --compress \
        --min_text_length 0 \
        --filter_disambig_pages
